@@ -11,7 +11,7 @@ MINING_REWARD = 10
 
 blockchain = []
 open_transactions = []
-owner = 'Douglas'
+owner = 'Max'
 
 
 def save_data():
