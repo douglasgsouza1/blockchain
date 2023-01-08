@@ -2,10 +2,10 @@ from functools import reduce
 
 import json
 
-from hash_util import hash_block
+from Blockchain.utility.hash_util import hash_block
 from block import Block
 from transaction import Transaction
-from verification import Verification
+from Blockchain.utility.verification import Verification
 
 MINING_REWARD = 10
 
