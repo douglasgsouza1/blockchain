@@ -1,6 +1,6 @@
 from collections import OrderedDict
 
-from Blockchain.utility.printable import Printable
+from utility.printable import Printable
 
 
 class Transaction(Printable):

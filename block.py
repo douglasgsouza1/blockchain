@@ -1,6 +1,6 @@
 from time import time
 
-from Blockchain.utility.printable import Printable
+from utility.printable import Printable
 
 
 class Block(Printable):

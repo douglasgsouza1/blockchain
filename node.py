@@ -1,6 +1,5 @@
 from blockchain import Blockchain
-from Blockchain.utility.verification import Verification
-
+from utility.verification import Verification
 
 class Node:
     def __init__(self):
@@ -67,5 +66,6 @@ class Node:
         print('Done!')
 
 
-node = Node()
-node.input()
+if __name__ == '__main__':
+    node = Node()
+    node.input()
