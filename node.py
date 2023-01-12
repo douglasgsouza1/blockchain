@@ -1,11 +1,11 @@
 from blockchain import Blockchain
 from utility.verification import Verification
+from wallet import Wallet
 
 class Node:
     def __init__(self):
-        # self.id = str(uuid4())
-        self.id = 'MAX'
-        self.blockchain = Blockchain(self.id)
+        self.wallet = Wallet()
+        self.blockchain = Blockchain(self.wallet.public_key)
 
     def transaction_value(self):
         tx_recipient = input('Enter the recipient of the transaction: ')
@@ -31,12 +31,14 @@ class Node:
             print('2: Mine a new block')
             print('3: Output the blockchain blocks')
             print('4: Check transaction validity')
+            print('5: Create Wallet')
+            print('6: Load Wallet')
             print('q: Quit')
             user_choice = self.user_choice()
             if user_choice == '1':
                 tx_data = self.transaction_value()
                 recipient, amount = tx_data
-                if self.blockchain.add_transaction(recipient, self.id, amount=amount):
+                if self.blockchain.add_transaction(recipient, self.wallet.public_key, amount=amount):
                     print('Added transaction!')
                 else:
                     print('Transaction failed!')
@@ -51,6 +53,10 @@ class Node:
                     print('All transactions are valid')
                 else:
                     print('There are invalid transactions')
+            elif user_choice == '5':
+                self.wallet.create_keys()
+            elif user_choice == '6':
+                pass
             elif user_choice == 'q':
                 waiting_input = False
             else:
@@ -59,7 +65,7 @@ class Node:
                 self.print_blockchain_elements()
                 print('Invalid blockchain!')
                 break
-            print('Balance of {}: {:6.2f}'.format(self.id, self.blockchain.get_balance()))
+            print('Balance of {}: {:6.2f}'.format(self.wallet.public_key, self.blockchain.get_balance()))
         else:
             print('User left!')
 
